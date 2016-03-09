@@ -1,0 +1,33 @@
+{
+    "name": "rollerworks/breadcrumbs-bundle",
+    "description": "Easy breadcrumbs navigation for Symfony powered applications (Not the Symfony FrameworkBundle)",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sebastiaan Stok ",
+            "email": "s.stok@rollerscapes.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "symfony/twig-bundle": "^2.8 || ^3.0",
+        "symfony/http-kernel": "^2.8 || ^3.0",
+        "symfony/dependency-injection": "^2.8 || ^3.0",
+        "doctrine/annotations": "^1.2.7"
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^2.8 || ^3.0",
+        "matthiasnoback/symfony-dependency-injection-test": "^0.7.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rollerworks\\Bundle\\BreadcrumbsBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rollerworks\\Bundle\\BreadcrumbsBundle\\Tests\\": "tests/"
+        }
+    }
+}
