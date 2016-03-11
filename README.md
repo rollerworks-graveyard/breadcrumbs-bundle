@@ -21,7 +21,7 @@ To install this package, add `rollerworks/breadcrumbs-bundle` to your composer.j
 $ php composer.phar require rollerworks/breadcrumbs-bundle
 ```
 
-Now, Composer[Composer] will automatically download all required files, and install them
+Now, [Composer] will automatically download all required files, and install them
 for you.
 
 [Composer]: https://getcomposer.org/
