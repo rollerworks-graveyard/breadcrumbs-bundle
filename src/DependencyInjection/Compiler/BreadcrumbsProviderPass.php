@@ -16,6 +16,7 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\Common\Annotations\Reader;
 use Rollerworks\Bundle\BreadcrumbsBundle\Annotation\Breadcrumb;
 use Rollerworks\Bundle\BreadcrumbsBundle\Annotation\BreadcrumbsProvider;
+use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -32,6 +33,11 @@ final class BreadcrumbsProviderPass implements CompilerPassInterface
     const LOADER_TAG_NAME = 'rollerworks_breadcrumb.provider';
 
     /**
+     * @var ContainerBuilder
+     */
+    private $container;
+
+    /**
      * {@inheritdoc}
      */
     public function process(ContainerBuilder $container)
@@ -42,8 +48,13 @@ final class BreadcrumbsProviderPass implements CompilerPassInterface
             return;
         }
 
+        $this->container = $container;
+
         $annotationsDir = dirname(dirname(__DIR__)).'/Annotation';
         $annotationReader = new AnnotationReader();
+
+        $container->addResource(new FileResource($annotationsDir.'/BreadcrumbsProvider.php'));
+        $container->addResource(new FileResource($annotationsDir.'/Breadcrumb.php'));
 
         AnnotationRegistry::registerFile($annotationsDir.'/BreadcrumbsProvider.php');
         AnnotationRegistry::registerFile($annotationsDir.'/Breadcrumb.php');
@@ -73,6 +84,8 @@ final class BreadcrumbsProviderPass implements CompilerPassInterface
         $container->getDefinition('rollerworks_breadcrumbs.loader')
             ->replaceArgument(0, $breadcrumbs)
             ->replaceArgument(1, $routes);
+
+        $this->container = null;
     }
 
     private function processBreadcrumbProvider(
@@ -88,6 +101,7 @@ final class BreadcrumbsProviderPass implements CompilerPassInterface
         $headExtras = [];
 
         $classReflection = new \ReflectionClass($class);
+        $this->container->addClassResource($classReflection);
 
         /** @var BreadcrumbsProvider $classAnnotation */
         if ($classAnnotation = $annotationReader->getClassAnnotation($classReflection, BreadcrumbsProvider::class)) {
