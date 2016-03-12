@@ -1,7 +1,7 @@
 RollerworksBreadcrumbsBundle
 ============================
 
-Easy breadcrumbs navigation for Symfony powered applications (Not the Symfony FrameworkBundle).
+Easy breadcrumbs navigation for Symfony powered applications.
 
 Requirements
 ------------
@@ -9,8 +9,10 @@ Requirements
 You need at least PHP 5.5.
 
 This package requires the Symfony HTTPKernel component and can be used
-in any Symfony powered application as long as the Symfony DependencyInjection
-component is used for dependency injection.
+in any Symfony powered application (including the Symfony full stack framework)
+as long as the Symfony DependencyInjection component is used for dependency injection.
+
+Which means you can use it without requiring the Symfony FrameworkBundle.
 
 Installation
 ------------
