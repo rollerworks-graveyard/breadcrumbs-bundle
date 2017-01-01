@@ -74,7 +74,7 @@ class BreadcrumbsLoader
      * @param string $name
      *
      * @throws \InvalidArgumentException when no breadcrumb is registered
-     *                                   by the this name.
+     *                                   by the this name
      *
      * @return array
      */
@@ -92,8 +92,8 @@ class BreadcrumbsLoader
      *
      * @param string $routeName
      *
-     * @return array Returns an empty array when no breadcrumb was found
-     *               for the route.
+     * @return array returns an empty array when no breadcrumb was found
+     *               for the route
      */
     public function getByRoute($routeName)
     {
@@ -110,7 +110,7 @@ class BreadcrumbsLoader
      * @param string $name
      *
      * @throws \InvalidArgumentException when no breadcrumb is registered
-     *                                   by the this name.
+     *                                   by the this name
      *
      * @return array
      */

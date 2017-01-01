@@ -113,7 +113,7 @@ final class BreadcrumbsLoaderTest extends \PHPUnit_Framework_TestCase
                 'acme.home' => [
                     'label' => 'Home',
                     'route' => 'acme_homepage',
-                ]
+                ],
             ],
             $this->loader->getBreadcrumb('acme.home')
         );
@@ -134,5 +134,4 @@ final class BreadcrumbsLoaderTest extends \PHPUnit_Framework_TestCase
             $this->loader->getByRoute('acme_homepage')
         );
     }
-
 }

@@ -80,7 +80,7 @@ final class BreadcrumbsProviderPassTest extends AbstractCompilerPassTestCase
                 'service' => 'acme.breadcrumbs.customer',
                 'method' => 'home',
                 'extra' => ['label' => 'Account'],
-                'trail' => ['acme.home', 'acme_customer.home']
+                'trail' => ['acme.home', 'acme_customer.home'],
             ],
             'acme.home' => [
                 'name' => 'acme.home',
