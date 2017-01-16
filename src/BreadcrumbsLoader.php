@@ -123,11 +123,11 @@ class BreadcrumbsLoader
         $request = $this->requestStack->getCurrentRequest();
         $trail = [];
 
-        foreach ($this->breadcrumbs[$name]['trail'] as $name) {
-            $trail[$name] = $this->container->get($this->breadcrumbs[$name]['service'])
-                ->{$this->breadcrumbs[$name]['method']}(
+        foreach ($this->breadcrumbs[$name]['trail'] as $trailPartName) {
+            $trail[$trailPartName] = $this->container->get($this->breadcrumbs[$trailPartName]['service'])
+                ->{$this->breadcrumbs[$trailPartName]['method']}(
                     $request,
-                    $this->breadcrumbs[$name]
+                    $this->breadcrumbs[$trailPartName]
                 );
         }
 
