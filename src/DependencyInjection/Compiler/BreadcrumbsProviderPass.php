@@ -117,24 +117,26 @@ final class BreadcrumbsProviderPass implements CompilerPassInterface
             $annotations = $annotationReader->getMethodAnnotations($methodReflection);
 
             foreach ($annotations as $annotation) {
-                if ($annotation instanceof Breadcrumb) {
-                    $name = $parameters->resolveValue($annotation->getFullName() ?: $namePrefix.$annotation->getName());
+                if (!$annotation instanceof Breadcrumb) {
+                    continue;
+                }
 
-                    $breadcrumbs[$name] = [
-                        'name' => $name,
-                        'parent' => $parameters->resolveValue($annotation->getParent()) ?: $headParent,
-                        'route' => $parameters->resolveValue(
-                            $annotation->getFullRoute() ?: $routePrefix.$annotation->getRoute()
-                        ),
-                        'class' => $class,
-                        'service' => $serviceId,
-                        'method' => $methodReflection->getName(),
-                        'extra' => $parameters->resolveValue(array_merge($headExtras, $annotation->getExtra())),
-                    ];
+                $name = $parameters->resolveValue($annotation->getFullName() ?: $namePrefix.$annotation->getName());
 
-                    if (empty($breadcrumbs[$name]['parent'])) {
-                        $breadcrumbs[$name]['parent'] = null;
-                    }
+                $breadcrumbs[$name] = [
+                    'name' => $name,
+                    'parent' => $parameters->resolveValue($annotation->getParent()) ?: $headParent,
+                    'route' => $parameters->resolveValue(
+                        $annotation->getFullRoute() ?: $routePrefix.$annotation->getRoute()
+                    ),
+                    'class' => $class,
+                    'service' => $serviceId,
+                    'method' => $methodReflection->name,
+                    'extra' => $parameters->resolveValue(array_merge($headExtras, $annotation->getExtra())),
+                ];
+
+                if (empty($breadcrumbs[$name]['parent'])) {
+                    $breadcrumbs[$name]['parent'] = null;
                 }
             }
         }
