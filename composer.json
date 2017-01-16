@@ -23,7 +23,8 @@
     "autoload": {
         "psr-4": {
             "Rollerworks\\Bundle\\BreadcrumbsBundle\\": "src/"
-        }
+        },
+        "exclude-from-classmap": ["test/"]
     },
     "autoload-dev": {
         "psr-4": {
