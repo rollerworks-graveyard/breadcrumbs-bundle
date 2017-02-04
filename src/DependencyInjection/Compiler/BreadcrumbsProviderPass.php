@@ -101,7 +101,7 @@ final class BreadcrumbsProviderPass implements CompilerPassInterface
         $headExtras = [];
 
         $classReflection = new \ReflectionClass($class);
-        $this->container->addClassResource($classReflection);
+        $this->container->addObjectResource($class);
 
         /** @var BreadcrumbsProvider $classAnnotation */
         if ($classAnnotation = $annotationReader->getClassAnnotation($classReflection, BreadcrumbsProvider::class)) {
