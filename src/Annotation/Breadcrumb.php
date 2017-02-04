@@ -66,14 +66,6 @@ final class Breadcrumb
         if ($this->fullRoute && $this->route) {
             throw new \InvalidArgumentException(sprintf('Only "route" or "fullRoute" can be provided.'));
         }
-
-        if (!$this->fullName && !$this->name) {
-            throw new \InvalidArgumentException(sprintf('Eg. "name" or "fullName" must be provided.'));
-        }
-
-        if (!$this->fullRoute && !$this->route) {
-            throw new \InvalidArgumentException(sprintf('Eg. "route" or "fullRoute" must be provided.'));
-        }
     }
 
     /**
