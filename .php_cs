@@ -9,24 +9,43 @@ This source file is subject to the MIT license that is bundled
 with this source code in the file LICENSE.
 EOF;
 
-Symfony\CS\Fixer\Contrib\HeaderCommentFixer::setHeader($header);
-
-return Symfony\CS\Config\Config::create()
-    ->setUsingLinter(false)
-    // use SYMFONY_LEVEL:
-    ->level(Symfony\CS\FixerInterface::SYMFONY_LEVEL)
-    // and extra fixers:
-    ->fixers([
-        'ordered_use',
-        //'strict',
-        'strict_param',
-        'short_array_syntax',
-        'phpdoc_order',
-        'header_comment',
-        '-psr0',
+return PhpCsFixer\Config::create()
+    ->setRules([
+        '@Symfony' => true,
+        '@Symfony:risky' => true,
+        '@PHP70Migration' => false,
+        '@PHP71Migration' => false,
+        'array_syntax' => array('syntax' => 'short'),
+        'combine_consecutive_unsets' => true,
+//        'declare_strict_types' => true,
+        'header_comment' => ['header' => $header],
+        'heredoc_to_nowdoc' => true,
+        'linebreak_after_opening_tag' => true,
+        'no_extra_consecutive_blank_lines' => ['continue', 'extra', 'return', 'throw', 'use', 'parenthesis_brace_block', 'square_brace_block', 'curly_brace_block'],
+        'no_short_echo_tag' => true,
+        'no_unreachable_default_argument_value' => false,
+        'no_useless_else' => true,
+        'no_useless_return' => true,
+        'ordered_class_elements' => false,
+        'ordered_imports' => true,
+        'phpdoc_add_missing_param_annotation' => false,
+        'phpdoc_annotation_without_dot' => true,
+        'phpdoc_no_empty_return' => false, // PHP 7 compatibility
+        'phpdoc_order' => true,
+        // This breaks for variable @var blocks
+        'phpdoc_to_comment' => false,
+        'phpdoc_var_without_name' => false,
+        'semicolon_after_instruction' => true,
+        'single_import_per_statement' => false,
+        'strict_comparison' => true,
+        'strict_param' => true,
+        'yoda_style' => false, # to broad
     ])
-    ->finder(
-        Symfony\CS\Finder\DefaultFinder::create()
+    ->setRiskyAllowed(true)
+    ->setFinder(
+        PhpCsFixer\Finder::create()
+            ->exclude('Fixtures')
             ->in([__DIR__.'/src', __DIR__.'/tests'])
     )
 ;
+

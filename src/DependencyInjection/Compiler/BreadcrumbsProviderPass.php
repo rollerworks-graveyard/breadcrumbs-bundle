@@ -70,7 +70,7 @@ final class BreadcrumbsProviderPass implements CompilerPassInterface
                 $this->processBreadcrumbProvider(
                     $parameters,
                     $serviceId,
-                    $container->findDefinition($serviceId),
+                    $container->findDefinition($serviceId)->setPublic(true),
                     $annotationReader
                 )
             );
