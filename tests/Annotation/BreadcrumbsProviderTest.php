@@ -11,9 +11,10 @@
 
 namespace Rollerworks\Bundle\BreadcrumbsBundle\Tests\Annotation;
 
+use PHPUnit\Framework\TestCase;
 use Rollerworks\Bundle\BreadcrumbsBundle\Annotation\BreadcrumbsProvider;
 
-final class BreadcrumbsProviderTest extends \PHPUnit_Framework_TestCase
+final class BreadcrumbsProviderTest extends TestCase
 {
     /**
      * @test

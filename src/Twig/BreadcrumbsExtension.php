@@ -12,17 +12,12 @@
 namespace Rollerworks\Bundle\BreadcrumbsBundle\Twig;
 
 use Rollerworks\Bundle\BreadcrumbsBundle\BreadcrumbsLoader;
+use Twig\Extension\AbstractExtension;
 
-class BreadcrumbsExtension extends \Twig_Extension
+class BreadcrumbsExtension extends AbstractExtension
 {
-    /**
-     * @var BreadcrumbsLoader
-     */
     private $breadcrumbsLoader;
 
-    /**
-     * BreadcrumbExtension constructor.
-     */
     public function __construct(BreadcrumbsLoader $breadcrumbsLoader)
     {
         $this->breadcrumbsLoader = $breadcrumbsLoader;
@@ -36,11 +31,6 @@ class BreadcrumbsExtension extends \Twig_Extension
         ];
     }
 
-    /**
-     * Returns the name of the extension.
-     *
-     * @return string The extension name
-     */
     public function getName()
     {
         return 'rollerworks_breadcrumbs';

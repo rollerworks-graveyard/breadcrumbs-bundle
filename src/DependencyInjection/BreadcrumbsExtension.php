@@ -24,7 +24,8 @@ final class BreadcrumbsExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $container->register('rollerworks_breadcrumbs.loader', BreadcrumbsLoader::class)
-            ->setArguments([[], [], new Reference('service_container'), new Reference('request_stack')]);
+            ->setArguments([[], [], new Reference('service_container'), new Reference('request_stack')])
+            ->setPublic(true);
 
         $container->register('rollerworks_breadcrumbs.twig_extension', TwigBreadcrumbsExtension::class)
             ->setArguments([new Reference('rollerworks_breadcrumbs.loader')])
@@ -33,7 +34,7 @@ final class BreadcrumbsExtension extends Extension
 
     public function getConfiguration(array $config, ContainerBuilder $container)
     {
-        // no-op
+        return null;
     }
 
     public function getAlias()

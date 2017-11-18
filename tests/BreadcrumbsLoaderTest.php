@@ -11,6 +11,7 @@
 
 namespace Rollerworks\Bundle\BreadcrumbsBundle\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Rollerworks\Bundle\BreadcrumbsBundle\BreadcrumbsLoader;
 use Rollerworks\Bundle\BreadcrumbsBundle\Tests\Fixtures\CustomerBreadcrumbsProvider;
 use Rollerworks\Bundle\BreadcrumbsBundle\Tests\Fixtures\HomepageBreadcrumbsProvider;
@@ -18,7 +19,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-final class BreadcrumbsLoaderTest extends \PHPUnit_Framework_TestCase
+final class BreadcrumbsLoaderTest extends TestCase
 {
     /**
      * @var BreadcrumbsLoader
