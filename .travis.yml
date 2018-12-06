@@ -17,6 +17,10 @@ matrix:
           env: DEPENDENCIES='dev'
         - php: 7.1
           env: DEPENDENCIES='low'
+        - php: 7.2
+          env: DEPENDENCIES='low'
+        - php: 7.3
+          env: DEPENDENCIES='low'
     fast_finish: true
 
 cache:
